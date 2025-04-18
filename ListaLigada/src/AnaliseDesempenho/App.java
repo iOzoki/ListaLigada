@@ -7,7 +7,7 @@ public class App {
         LinkedList linkedList = new LinkedList();
 
         try {
-            File arquivoFile = new File("arq.txt");
+            File arquivoFile = new File("C:\\Users\\andre\\Downloads\\Isaac\\arq.txt");
             Scanner scanner = new Scanner(arquivoFile);
             if(scanner.hasNextLine()){
                 String[] valoresIniciais = scanner.nextLine().split(" ");
@@ -24,7 +24,7 @@ public class App {
             int contador = 0;
             while (scanner.hasNextLine() && contador < numeroAcoes) {
                 String linha = scanner.nextLine();
-                String[] partes = linha.split("");//split dividir em partes a linha do texto do arquivo pro switch case
+                String[] partes = linha.split(" ");//split dividir em partes a linha do texto do arquivo pro switch case
                 
                 switch (partes[0]) {
                     case "A":
