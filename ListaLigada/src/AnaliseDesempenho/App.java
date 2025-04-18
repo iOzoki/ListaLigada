@@ -5,10 +5,12 @@ import java.io.FileNotFoundException;
 public class App {
     public static void main(String[] args) throws Exception {
         LinkedList linkedList = new LinkedList();
+        File arquivoFile = new File("C:\\Users\\andre\\Downloads\\Isaac\\arq.txt");
+        Scanner scanner = null;
+        //ler o scanner apenas no try para fechar na função finally
 
         try {
-            File arquivoFile = new File("C:\\Users\\andre\\Downloads\\Isaac\\arq.txt");
-            Scanner scanner = new Scanner(arquivoFile);
+            scanner = new Scanner(arquivoFile);
             if(scanner.hasNextLine()){
                 String[] valoresIniciais = scanner.nextLine().split(" ");
                 for(String val : valoresIniciais) {
@@ -64,6 +66,11 @@ public class App {
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado: " + e.getMessage());
 
+        }
+        finally {
+            if(scanner != null){
+                scanner.close();
+            }
         }
     }
 }
