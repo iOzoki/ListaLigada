@@ -11,6 +11,10 @@ public class LinkedList {
         return tamanho;
     }
 
+    public void setTamanho(int tamanho){
+        this.tamanho = tamanho;
+    }
+
     public ValorArmazenado getPrimeiro() {
         return primeiro;
     }

@@ -24,7 +24,7 @@ public class App {
             int contador = 0;
             while (scanner.hasNextLine() && contador < numeroAcoes) {
                 String linha = scanner.nextLine();
-                String[] partes = linha.split("");//dividir em partes a linha pro switch case
+                String[] partes = linha.split("");//split dividir em partes a linha do texto do arquivo pro switch case
                 
                 switch (partes[0]) {
                     case "A":
@@ -34,8 +34,20 @@ public class App {
                         if(posicao == 0) {
                             novo.setProximo(linkedList.getPrimeiro());
                             linkedList.setPrimeiro(novo);
+                            if(linkedList.getTamanho() == 0){
+                                linkedList.setUltimo(novo);
+                            }
+                            linkedList.setTamanho(linkedList.getTamanho() + 1);
                         }
-
+                        else if(posicao >= linkedList.getTamanho()){
+                                linkedList.Adicionar(valor);
+                        }
+                        else {
+                                ValorArmazenado anterior = linkedList.getPosicao(posicao - 1);
+                                novo.setProximo(anterior.getProximo());
+                                anterior.setProximo(novo);
+                                linkedList.setTamanho(linkedList.getTamanho() + 1);
+                        }
                         break;
                     case "R":
                         linkedList.Remover(Integer.parseInt(partes[1]));
