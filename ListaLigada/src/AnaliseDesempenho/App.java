@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        System.out.println("Executando...");
         LinkedList linkedList = new LinkedList();
         File arquivoFile = new File("C:\\Users\\andre\\Downloads\\Isaac\\arq.txt");
         Scanner scanner = null;
@@ -55,9 +56,12 @@ public class App {
                         linkedList.Remover(Integer.parseInt(partes[1]));
                         break;
                     case "P":
-                        for(int i = 0; i < linkedList.getTamanho(); i++){
-                            linkedList.getPosicao(i).getValor();
+                        ValorArmazenado atual = linkedList.getPrimeiro();
+                        while (atual != null) {
+                            System.out.print(atual.getValor() + " ");
+                            atual = atual.getProximo();
                         }
+                        System.out.println();
                         break;
                     default:
                         break;
