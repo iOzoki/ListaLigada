@@ -37,7 +37,7 @@ public class App {
                             if(linkedList.getTamanho() == 0){
                                 linkedList.setUltimo(novo);
                             }
-                            linkedList.setTamanho(linkedList.getTamanho() + 1);
+                            linkedList.setTamanho(linkedList.getTamanho() + 1);//é bom criar metodo pra incrementar tamanho incrementarTamanho();
                         }
                         else if(posicao >= linkedList.getTamanho()){
                                 linkedList.Adicionar(valor);
