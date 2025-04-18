@@ -3,6 +3,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class App {
+
+    //LEIA ANTES DE USAR!!!!
+    //PARA QUE O ARQUIVO SEJA LIDO DO DIRETORIO CERTO DO SEU COMPUTADOR 
+    //USE O EXPLORADOR DE ARQUIVOS PARA LOCALIZAR O ARQUIVO "arq.txt"
+    //DEPOIS CLIQUE COM O BOTÃO DIREITO, VÁ EM PROPRIEDADES E COPIE O >LOCAL<
+    //ENTÃO O ADICIONE NO CAMINHO DO CCÓDIGO EM: File arquivoFile = new File(AQUI O LOCAL DO ARQUIVO)
     public static void main(String[] args) throws Exception {
         System.out.println("Executando...");
         LinkedList linkedList = new LinkedList();
