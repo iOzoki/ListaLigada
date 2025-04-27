@@ -19,9 +19,9 @@ public class LinkedList {
         return primeiro;
     }
 
-    public ValorArmazenado getUltimo() {
-        return ultimo;
-    }
+//    public ValorArmazenado getUltimo() {
+//        return ultimo;
+//    }
 
     public void setPrimeiro(ValorArmazenado primeiro) {
         this.primeiro = primeiro;

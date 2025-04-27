@@ -12,9 +12,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Executando...");
         LinkedList linkedList = new LinkedList();
-        File arquivoFile = new File("C:\\Users\\andre\\Downloads\\Isaac\\arq.txt");
+        File arquivoFile = new File("C:\\Users\\isaac\\Downloads\\Projetos em Java\\ListaLigada\\ListaLigada\\src\\arq.txt");
         Scanner scanner = null;
-        //ler o scanner apenas no try para fechar na função finally
+        //ler o arquivo com scanner apenas no try para fechar na função finally
 
         try {
             scanner = new Scanner(arquivoFile);
@@ -26,14 +26,14 @@ public class App {
             }
 
             int numeroAcoes = 0;
-            if (scanner.hasNextLine()) {
-                numeroAcoes = Integer.parseInt(scanner.nextLine());
+            if (scanner.hasNextInt()) {
+                numeroAcoes = scanner.nextInt();
             }
 
             int contador = 0;
             while (scanner.hasNextLine() && contador < numeroAcoes) {
                 String linha = scanner.nextLine();
-                String[] partes = linha.split(" ");//split dividir em partes a linha do texto do arquivo pro switch case
+                String[] partes = linha.split(" "); //split dividir em partes a linha do texto do arquivo pro switch case
                 
                 switch (partes[0]) {
                     case "A":

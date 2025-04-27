@@ -2,8 +2,8 @@ public class ValorArmazenado {
     private int valor;
     private ValorArmazenado proximo;
 
-    public ValorArmazenado(int novoValor){
-        this.valor = novoValor;
+    public ValorArmazenado(int novoVal){
+        this.valor = novoVal;
     }
 
     public int getValor() {
