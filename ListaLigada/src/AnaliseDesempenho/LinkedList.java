@@ -45,37 +45,38 @@ public class LinkedList {
         }
     }
 
-    public void Remover(int valorParaRemover) {
+    public boolean Remover(int valorParaRemover) {
         ValorArmazenado atual = this.primeiro;
         ValorArmazenado anterior = null;
-        for(int i = 0; i < this.getTamanho(); i++){
-            if(atual.getValor() == valorParaRemover) {
-                if(atual == primeiro && atual == ultimo) {
+
+        for (int i = 0; i < this.getTamanho(); i++) {
+            if (atual.getValor() == valorParaRemover) {
+                if (atual == primeiro && atual == ultimo) {
                     this.primeiro = null;
                     this.ultimo = null;
-                }
-                else if(atual == primeiro) {
+                } else if (atual == primeiro) {
                     this.primeiro = atual.getProximo();
                     atual.setProximo(null);
-                    this.tamanho--;
-                }
-                else if(atual == ultimo){
+                } else if (atual == ultimo) {
                     this.ultimo = anterior;
                     anterior.setProximo(null);
-                    this.tamanho--;
-                }
-                else{
+                } else {
                     anterior.setProximo(atual.getProximo());
                     atual = null;
-                    this.tamanho--;
                 }
-                break;
+
+                this.tamanho--;
+                return true;
             }
+
             anterior = atual;
             atual = atual.getProximo();
-        }    
+        }
+
+        return false;
     }
- 
+
+
     public ValorArmazenado getPosicao(int posicao){
         ValorArmazenado atual = this.primeiro;
         for(int i = 0; i < posicao; i++){

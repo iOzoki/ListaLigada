@@ -12,8 +12,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Executando...");
         LinkedList linkedList = new LinkedList();
-        File arquivoFile = new File("C:\\Users\\isaac\\Downloads\\Projetos em Java\\ListaLigada\\ListaLigada\\src\\arq.txt");
+        File arquivoFile = new File("C:\\Users\\isaac\\Downloads\\Projetos em Java\\ListaLigada\\ListaLigada\\src\\arq-novo.txt");
         Scanner scanner = null;
+        long inicio = System.nanoTime();
         //ler o arquivo com scanner apenas no try para fechar na função finally
 
         try {
@@ -32,14 +33,26 @@ public class App {
 
             int contador = 0;
             while (scanner.hasNextLine() && contador < numeroAcoes) {
-                String linha = scanner.nextLine();
-                String[] partes = linha.split(" "); //split dividir em partes a linha do texto do arquivo pro switch case
-                
+                String linha = scanner.nextLine().trim();
+                if (linha.isEmpty()) {
+                    continue;
+                }
+
+                String[] partes = linha.split("\\s+");
+                if (partes.length == 0) {
+                    continue;
+                }
                 switch (partes[0]) {
                     case "A":
                         int valor = Integer.parseInt(partes[1]);
                         int posicao = Integer.parseInt(partes[2]);
+
+                        if (posicao < 0 || posicao > linkedList.getTamanho()) {
+                            continue;
+                        }
+
                         ValorArmazenado novo = new ValorArmazenado(valor);
+
                         if(posicao == 0) {
                             novo.setProximo(linkedList.getPrimeiro());
                             linkedList.setPrimeiro(novo);
@@ -48,19 +61,26 @@ public class App {
                             }
                             linkedList.setTamanho(linkedList.getTamanho() + 1);//é bom criar metodo pra incrementar tamanho incrementarTamanho();
                         }
+
                         else if(posicao >= linkedList.getTamanho()){
                                 linkedList.Adicionar(valor);
                         }
+
                         else {
                                 ValorArmazenado anterior = linkedList.getPosicao(posicao - 1);
                                 novo.setProximo(anterior.getProximo());
                                 anterior.setProximo(novo);
                                 linkedList.setTamanho(linkedList.getTamanho() + 1);
                         }
+
                         break;
                     case "R":
-                        linkedList.Remover(Integer.parseInt(partes[1]));
-                        break;
+                        int valorRemover = Integer.parseInt(partes[1]);
+                        boolean removido = linkedList.Remover(valorRemover);
+
+                        if (!removido) {
+                            linkedList.Remover(Integer.parseInt(partes[1]));
+                        }
                     case "P":
                         ValorArmazenado atual = linkedList.getPrimeiro();
                         while (atual != null) {
@@ -81,6 +101,10 @@ public class App {
             if(scanner != null){
                 scanner.close();
             }
+            long fim = System.nanoTime();
+            long duracao = fim - inicio; // em nanossegundos
+
+            System.out.println("Tempo de execução: " + duracao / 1_000_000.0 + " ms");
         }
     }
 }
